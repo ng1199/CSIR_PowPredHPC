@@ -1,4 +1,4 @@
-# Power Consumption Prediction in HPC Clusters using LSTM
+# Power Consumption Forecasting in HPC Clusters using LSTM
 
 ## Project Overview
 
