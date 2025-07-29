@@ -1,4 +1,4 @@
-# Power Consumption Forecasting in HPC Clusters using LSTM
+# Power Consumption Prediction in HPC Clusters using LSTM
 
 ## Project Overview
 
@@ -21,7 +21,7 @@ Power consumption in HPC environments is highly dynamic and hard to forecast due
 - Multi-step prediction (24 hours = 288 future time steps at 5-minute intervals)
 - Model evaluation on test and validation sets
 - Visualizations for predictions vs actuals
-- Evaluation metrics: MAE, RMSE, R² Score
+- Evaluation metrics: MAE, MSE, RMSE, R² Score
 
 ## Methodology
 
@@ -46,16 +46,17 @@ Power consumption in HPC environments is highly dynamic and hard to forecast due
    - Rolling input windows for recursive prediction
 
 5. **Evaluation Metrics**
-   - Root Mean Square Error (RMSE)
    - Mean Absolute Error (MAE)
+   - Mean Squared Error (MSE)
+   - Root Mean Squared Error (RMSE)
    - R² Score
 
 ## Model Performance
 
-| Dataset     | MAE   | RMSE  | R² Score |
-|-------------|-------|-------|----------|
-| Test Set    | ~1.50 | ~1.98 | ~0.91    |
-| Validation  | ~1.43 | ~1.85 | ~0.92    |
+| Dataset     | MAE     | MSE        | RMSE    | R² Score |
+|-------------|---------|------------|---------|----------|
+| Test Set    | 1893.86 | 7695219.13 | 2774.03 | 0.9899   |
+| Validation  | 1574.44 | 5238448.74 | 2288.77 | 0.9924   |
 
 > Note: Performance may vary slightly by node, depending on load variability and signal pattern.
 
