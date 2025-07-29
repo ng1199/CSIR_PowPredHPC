@@ -10,9 +10,10 @@ Power consumption in HPC environments is highly dynamic and hard to forecast due
 
 ## Dataset
 
-- **Source**: Real-world HPC node-wise power consumption data (collected over 5 months).
+- **Source**: Real-world HPC node-wise power consumption data collected internally during a CSIR research internship.
 - **Structure**: Multiple node-wise columns like `1_1-Pow-consumption`, `2_11-Pow-consumption`, each sampled at 5-minute intervals.
-- **Duration**: Historical data used up to June 10th for training. Model predicts power from **June 10 to June 17**.
+- **Duration**: Historical data used up to June 10th for training. The model predicts power from **June 10 to June 17**.
+- **Availability**: *Due to confidentiality agreements with CSIR laboratories, the dataset is not provided in this repository.*
 
 ## Project Features
 
@@ -58,12 +59,12 @@ Power consumption in HPC environments is highly dynamic and hard to forecast due
 | Test Set    | 1893.86 | 7695219.13 | 2774.03 | 0.9899   |
 | Validation  | 1574.44 | 5238448.74 | 2288.77 | 0.9924   |
 
-> Note: Performance may vary slightly by node, depending on load variability and signal pattern.
+> Note: Performance may vary slightly by node, depending on load variability and signal patterns.
 
 ## Project File
 
-- `Power_pred_HPC_LSTM.ipynb`: Jupyter notebook with full code for preprocessing, training, prediction, and visualization.
-- Dataset should be placed in the same directory as `hardware_pow_data.xlsx`.
+- `Power_pred_HPC_LSTM.ipynb`: Jupyter notebook with complete code for data processing, model training, evaluation, and forecasting.
+- **Dataset not included** due to confidentiality.
 
 ## How to Run
 
@@ -72,26 +73,27 @@ Power consumption in HPC environments is highly dynamic and hard to forecast due
     ```bash
     pip install pandas numpy matplotlib scikit-learn tensorflow openpyxl
     ```
-3. Run the notebook:
-    ```
+3. Place your own compatible dataset as `hardware_pow_data.xlsx` in the working directory (if available).
+4. Run the notebook:
+    ```bash
     jupyter notebook Power_pred_HPC_LSTM.ipynb
     ```
 
 ## Limitations
 
-- The model is trained independently per node, not using spatial correlation between nodes.
-- Forecasting accuracy may degrade with higher forecast horizons due to error accumulation.
-- Some models (like ARIMA and Prophet) were initially explored but did not handle multivariate multistep sequences well, so were replaced by LSTM.
+- The model is trained independently per node, without leveraging spatial relationships across the cluster.
+- Accuracy may degrade for longer forecasting windows due to error propagation.
+- Baseline models like ARIMA and Prophet were evaluated but could not handle high-resolution multistep forecasting as efficiently as LSTM.
 
 ## Future Improvements
 
-- Extend to multivariate LSTM or Graph Neural Networks to capture spatial-temporal dependencies.
-- Deploy as a real-time forecasting microservice using Flask or FastAPI.
-- Integrate anomaly detection to flag unusual power patterns.
+- Extend to multivariate LSTM or Graph Neural Networks for spatial-temporal modeling.
+- Deploy model in real-time using Flask/FastAPI for HPC cluster monitoring.
+- Integrate anomaly detection to flag unusual power usage.
 
 ## License
 
-This project is released without any license and is strictly for academic or research purposes during my internship. Reuse of the code is permitted with proper credit.
+This project does not carry any open-source license and is strictly for academic or research use as part of an internship at CSIR. Reuse is allowed with proper attribution.
 
 ## Author
 
